@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lora:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+@custom-variant dark (&:is(.dark *));
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   THE ONLY design-tokens file. This single file owns the whole app's visual
+   identity — colors, radius, fonts, shadows, light + dark. To re-theme the app
+   (e.g. "make it a Supabase theme"), edit the token VALUES in :root and .dark
+   below. Nothing else. No second config file, no component edits, no library
+   theme layer. Values are oklch(); the @theme inline block maps them to Tailwind
+   utilities (bg-primary, text-foreground, border-border, …) in this same file.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Case-file palette: charcoal, bone paper, and oxblood. ── */
+:root {
+  --background: oklch(0.16 0.008 45);
+  --foreground: oklch(0.91 0.025 82);
+  --card: oklch(0.22 0.009 46);
+  --card-foreground: oklch(0.91 0.025 82);
+  --popover: oklch(0.22 0.009 46);
+  --popover-foreground: oklch(0.91 0.025 82);
+  --primary: oklch(0.47 0.12 25);
+  --primary-foreground: oklch(0.97 0.018 80);
+  --secondary: oklch(0.27 0.012 48);
+  --secondary-foreground: oklch(0.85 0.03 80);
+  --muted: oklch(0.24 0.009 46);
+  --muted-foreground: oklch(0.68 0.025 75);
+  --accent: oklch(0.38 0.075 24);
+  --accent-foreground: oklch(0.94 0.025 80);
+  --destructive: oklch(0.53 0.16 25);
+  --destructive-foreground: oklch(0.97 0.018 80);
+  --border: oklch(0.34 0.012 47);
+  --input: oklch(0.34 0.012 47);
+  --ring: oklch(0.58 0.11 26);
+  --chart-1: oklch(0.54 0.13 25);
+  --chart-2: oklch(0.76 0.07 74);
+  --chart-3: oklch(0.63 0.06 150);
+  --chart-4: oklch(0.66 0.07 230);
+  --chart-5: oklch(0.73 0.06 50);
+  --sidebar: oklch(0.19 0.009 45);
+  --sidebar-foreground: oklch(0.91 0.025 82);
+  --sidebar-primary: oklch(0.47 0.12 25);
+  --sidebar-primary-foreground: oklch(0.97 0.018 80);
+  --sidebar-accent: oklch(0.28 0.012 48);
+  --sidebar-accent-foreground: oklch(0.91 0.025 82);
+  --sidebar-border: oklch(0.34 0.012 47);
+  --sidebar-ring: oklch(0.58 0.11 26);
+
+  --radius: 0.2rem;
+  --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Lora', ui-serif, Georgia, serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --shadow-sm: 0 2px 8px oklch(0.05 0.008 40 / 0.22);
+  --shadow-md: 0 10px 25px oklch(0.05 0.008 40 / 0.32);
+  --shadow-lg: 0 18px 42px oklch(0.04 0.008 40 / 0.5);
+}
+
+.dark {
+  --background: oklch(0.14 0.008 44);
+  --foreground: oklch(0.91 0.025 82);
+  --card: oklch(0.2 0.01 45);
+  --card-foreground: oklch(0.91 0.025 82);
+  --popover: oklch(0.2 0.01 45);
+  --popover-foreground: oklch(0.91 0.025 82);
+  --primary: oklch(0.55 0.14 25);
+  --primary-foreground: oklch(0.97 0.018 80);
+  --secondary: oklch(0.25 0.012 47);
+  --secondary-foreground: oklch(0.85 0.03 80);
+  --muted: oklch(0.21 0.01 45);
+  --muted-foreground: oklch(0.69 0.025 75);
+  --accent: oklch(0.34 0.08 24);
+  --accent-foreground: oklch(0.94 0.025 80);
+  --destructive: oklch(0.57 0.17 25);
+  --destructive-foreground: oklch(0.97 0.018 80);
+  --border: oklch(0.32 0.012 47);
+  --input: oklch(0.32 0.012 47);
+  --ring: oklch(0.62 0.12 26);
+  --chart-1: oklch(0.59 0.14 25);
+  --chart-2: oklch(0.77 0.07 74);
+  --chart-3: oklch(0.66 0.06 150);
+  --chart-4: oklch(0.7 0.07 230);
+  --chart-5: oklch(0.75 0.06 50);
+  --sidebar: oklch(0.17 0.009 45);
+  --sidebar-foreground: oklch(0.91 0.025 82);
+  --sidebar-primary: oklch(0.55 0.14 25);
+  --sidebar-primary-foreground: oklch(0.97 0.018 80);
+  --sidebar-accent: oklch(0.27 0.012 48);
+  --sidebar-accent-foreground: oklch(0.91 0.025 82);
+  --sidebar-border: oklch(0.32 0.012 47);
+  --sidebar-ring: oklch(0.62 0.12 26);
+}
+
+/* ── Token → utility mapping (Tailwind v4). Same file as the values above. ── */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+
+  /* Full viewport chain so AppShell / Sidebar h-full + flex-1 work */
+  html { height: 100%; }
+  #root {
+    min-height: 100%;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+  body {
+    min-height: 100%;
+    min-height: 100dvh;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in { animation: fade-in 0.3s ease-in-out; }
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}
+
+.access-screen, .archive-page { background: radial-gradient(ellipse at 50% 42%, oklch(0.23 0.018 38 / 0.62), transparent 58%), var(--background); }
+.access-card { background: linear-gradient(145deg, oklch(0.19 0.012 43 / 0.92), oklch(0.14 0.008 44 / 0.98)); box-shadow: 0 24px 90px oklch(0.04 0.005 40 / 0.65), inset 0 1px oklch(0.8 0.02 75 / 0.06); }
+.grain-layer { position: fixed; z-index: 20; inset: 0; pointer-events: none; opacity: .12; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E"); mix-blend-mode: screen; }
+.welcome-screen { background: radial-gradient(ellipse at 50% 43%, oklch(0.24 0.028 29 / .48), transparent 42%), linear-gradient(180deg, oklch(0.13 0.009 42), oklch(0.17 0.012 42)); animation: room-flicker 14s ease-in-out infinite; }
+.welcome-name { text-shadow: 0 0 50px oklch(0.46 0.13 25 / .14); }
+.name-bracket { color: var(--primary); font-style: italic; }
+@keyframes room-flicker { 0%, 37%, 39%, 72%, 74%, 100% { opacity: 1; } 38%, 73% { opacity: .94; } }
+.case-section { background: linear-gradient(180deg, oklch(0.17 0.012 42), oklch(0.13 0.008 42)); }
+.wood-frame { padding: clamp(10px, 2.1vw, 24px); border: 1px solid oklch(0.55 0.08 51 / .55); background: linear-gradient(135deg, oklch(0.35 0.055 48), oklch(0.22 0.035 42) 28%, oklch(0.4 0.06 49) 48%, oklch(0.21 0.027 43) 72%, oklch(0.34 0.05 48)); box-shadow: 0 28px 70px oklch(0.04 0.008 40 / .7), inset 0 0 0 2px oklch(0.11 0.01 43 / .8), inset 0 0 24px oklch(0.06 0.01 40 / .75); }
+.board-surface { position: relative; height: min(76vw, 760px); min-height: 660px; overflow: hidden; border: 1px solid oklch(0.48 0.04 48 / .3); background: radial-gradient(ellipse at 50% 48%, oklch(0.21 0.013 41), oklch(0.12 0.008 43) 78%), repeating-linear-gradient(3deg, transparent 0 10px, oklch(0.56 0.05 50 / .025) 11px, transparent 12px); box-shadow: inset 0 8px 30px oklch(0.04 0.008 40 / .65); }
+.board-surface::after { content: ''; position: absolute; inset: 0; z-index: 8; pointer-events: none; opacity: .12; background-image: repeating-linear-gradient(0deg, transparent 0 3px, oklch(0.8 0.02 70 / .06) 4px, transparent 5px); }
+.board-mark { position: absolute; z-index: 3; top: 18px; font: 9px var(--font-mono); letter-spacing: .16em; color: oklch(0.78 0.025 74 / .48); }
+.board-mark-left { left: 24px; }.board-mark-right { right: 24px; text-align: right; }
+.string-map { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; overflow: visible; }
+.string-map path { fill: none; stroke: oklch(0.48 0.16 26 / .82); stroke-width: 2.2; filter: drop-shadow(0 1px 1px oklch(0 0 0 / .8)); }
+.evidence-item { position: absolute; z-index: 2; cursor: pointer; transition: transform .24s ease, box-shadow .24s ease; }
+.evidence-item:hover { z-index: 6; transform: translateY(-5px) rotate(0deg) scale(1.025); box-shadow: 0 20px 34px oklch(0 0 0 / .58); }
+.board-main-paper:hover { transform: translate(-50%, -50%) rotate(0deg) scale(1.015); }
+.paper-photo, .paper-note, .board-main-paper { border: 1px solid oklch(0.33 0.025 58); color: oklch(0.22 0.025 49); box-shadow: 0 12px 22px oklch(0 0 0 / .48), 2px 3px 0 oklch(0.56 0.04 61 / .22); }
+.paper-photo { padding: 9px 9px 30px; background: oklch(0.83 0.045 78); }
+.paper-photo img { display: block; width: 100%; height: 145px; object-fit: cover; filter: saturate(.62) sepia(.16) contrast(1.1) brightness(.78); }
+.photo-caption { position: absolute; bottom: 9px; left: 10px; font: 8px var(--font-mono); letter-spacing: .08em; }
+.board-alley { top: 13%; left: 7%; width: 25%; transform: rotate(-6deg); }.board-hallway { top: 56%; left: 7%; width: 26%; transform: rotate(4deg); }
+.paper-note { display: flex; flex-direction: column; justify-content: center; gap: 12px; min-height: 160px; padding: 20px; text-align: left; background: repeating-linear-gradient(0deg, oklch(0.85 0.045 79), oklch(0.85 0.045 79) 25px, oklch(0.69 0.04 75 / .5) 26px); }
+.board-transcript { top: 15%; right: 8%; width: 23%; transform: rotate(5deg); }.board-timeline { right: 10%; bottom: 11%; width: 25%; min-height: 180px; transform: rotate(-3deg); }
+.pin { position: absolute; z-index: 4; top: -7px; left: 50%; width: 13px; height: 13px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, oklch(0.94 0.025 80), oklch(0.52 0.025 70) 43%, oklch(0.19 0.01 50) 78%); box-shadow: 1px 3px 5px oklch(0 0 0 / .65); }
+.note-small { font: 8px var(--font-mono); letter-spacing: .1em; }.hand-note { font: italic 20px var(--font-serif); line-height: 1.15; transform: rotate(-4deg); }.redacted { color: oklch(0.33 0.02 48); letter-spacing: .1em; }.timestamp { font: 700 24px var(--font-mono); letter-spacing: .03em; line-height: 1.18; }.timestamp span { color: oklch(0.42 0.14 25); font-size: 30px; }
+.board-main-paper { top: 50%; left: 50%; display: flex; width: 34%; max-width: 360px; min-width: 280px; flex-direction: column; align-items: center; padding: 25px 26px 22px; background: radial-gradient(ellipse at 45% 35%, oklch(0.91 0.055 81), oklch(0.81 0.05 72)); transform: translate(-50%, -50%) rotate(-1deg); }
+.case-stamp { display: flex; width: 100%; justify-content: space-between; border-bottom: 1px solid oklch(0.45 0.04 50 / .32); padding-bottom: 9px; font: 8px var(--font-mono); letter-spacing: .14em; }.case-stamp i { color: oklch(0.43 0.14 25); font-style: normal; }
+.subject-title { align-self: flex-start; margin: 11px 0 8px; font: 700 11px var(--font-mono); letter-spacing: .11em; line-height: 1.4; }
+.portrait-slot { position: relative; display: flex; width: 100%; height: 218px; align-items: center; justify-content: center; overflow: hidden; background: radial-gradient(ellipse at 50% 45%, oklch(0.42 0.025 49), oklch(0.19 0.018 47)); }
+.portrait-slot svg { position: absolute; height: 82%; fill: oklch(0.12 0.012 46); stroke: oklch(0.12 0.012 46); stroke-width: 5; opacity: .82; }.portrait-slot > span { position: absolute; bottom: 9px; color: oklch(0.85 0.035 75 / .7); font: 7px var(--font-mono); line-height: 1.4; letter-spacing: .12em; text-align: center; }
+.cross-mark { position: absolute; top: 49%; left: -8%; width: 118%; height: 9px; background: oklch(0.42 0.18 25 / .93); box-shadow: 0 1px 1px oklch(0.12 0.02 20 / .7); }.cross-one { transform: rotate(17deg); }.cross-two { transform: rotate(-24deg); height: 6px; opacity: .88; }
+.subject-meta { align-self: flex-start; margin-top: 10px; font: 7px/1.6 var(--font-mono); letter-spacing: .08em; }.handwriting { align-self: flex-end; margin-top: -8px; color: oklch(0.43 0.15 24); font: italic 17px var(--font-serif); transform: rotate(-6deg); }
+.board-whisper, .board-index { position: absolute; z-index: 3; bottom: 25px; color: oklch(0.8 0.03 75 / .48); font: italic 17px var(--font-serif); }.board-whisper { left: 39%; }.board-index { right: 4%; font: 8px var(--font-mono); letter-spacing: .12em; }
+.clue-backdrop { background: oklch(0.05 0.005 40 / .82); backdrop-filter: blur(7px); }.clue-dialog { background: linear-gradient(145deg, oklch(0.24 0.014 43), oklch(0.16 0.009 42)); box-shadow: 0 24px 80px oklch(0 0 0 / .6); }
+@media (max-width: 700px) {
+  .welcome-screen { min-height: 88svh; }
+  .board-surface { display: flex; height: auto; min-height: 0; flex-direction: column; align-items: center; gap: 25px; overflow: hidden; padding: 58px 18px 45px; }
+  .string-map { display: none; }
+  .board-mark { top: 17px; font-size: 7px; }.board-mark-left { left: 12px; }.board-mark-right { right: 12px; max-width: 90px; }
+  .evidence-item { position: relative; top: auto; right: auto; bottom: auto; left: auto; width: min(100%, 340px); max-width: 340px; min-width: 0; transform: none; }
+  .board-main-paper { order: -1; width: min(100%, 340px); max-width: 340px; padding: 22px; transform: rotate(-1deg); }
+  .board-alley, .board-hallway { width: min(100%, 340px); }.paper-photo img { height: 180px; }
+  .board-whisper, .board-index { position: relative; inset: auto; z-index: 3; }.board-whisper { align-self: flex-start; margin: 0 0 0 12px; }.board-index { align-self: flex-end; margin: -15px 8px 0 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
